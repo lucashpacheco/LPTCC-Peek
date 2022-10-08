@@ -1,3 +1,44 @@
-<div class="content-body">
-  <router-outlet></router-outlet>
+  <mat-toolbar color="#424242">
+    <mat-toolbar-row>
+      <h2>Peek</h2>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<div class="main-container">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list>
+        <button mat-button class="menu-button">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-button class="menu-button">
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-button class="menu-button">
+          <mat-icon>people</mat-icon>
+          <span>Users</span>
+        </button>
+        <button mat-button class="menu-button">
+          <mat-icon>info</mat-icon>
+          <span>About</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button">
+          <mat-icon>help</mat-icon>
+          <span>Help</span>
+        </button>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content-body">
+      <div style="height: 92vh">
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
