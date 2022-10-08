@@ -8,8 +8,6 @@ import { LoginService } from '../../services/login-service.service';
 import { Security } from '../../utils/security.util';
 
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -66,5 +64,12 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/login'])
           })
     }
+    else {
+      this.router.navigate(['/login'])
+    }
+  }
+
+  onLogout() {
+    Security.clear()
   }
 }

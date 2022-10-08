@@ -1,0 +1,11 @@
+.peek-footer{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    width:100%;
+}
+
+.peek-buttons{
+
+    width:50%;
+}

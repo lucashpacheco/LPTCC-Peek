@@ -1,0 +1,19 @@
+.content{
+    display:flex;
+    flex-direction: row;
+    width: 80%;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 25px;
+}
+
+.sugestions {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 25px;
+}

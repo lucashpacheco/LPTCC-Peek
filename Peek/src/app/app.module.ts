@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
+import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { FeedHeaderComponent } from './pages/home/feed-header/feed-header.compon
 import { FeedBodyComponent } from './pages/home/feed-body/feed-body.component';
 import { UserSugestionComponent } from './pages/home/user-sugestion/user-sugestion.component';
 import { PeekSugestionComponent } from './pages/home/peek-sugestion/peek-sugestion.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -37,9 +38,10 @@ import { PeekSugestionComponent } from './pages/home/peek-sugestion/peek-sugesti
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    MatDividerModule,
     ReactiveFormsModule,
     HttpClientModule, 
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
