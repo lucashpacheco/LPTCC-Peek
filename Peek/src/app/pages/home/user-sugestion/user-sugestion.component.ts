@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user.service';
+import { Security } from '../../../utils/security.util';
 
 @Component({
   selector: 'app-user-sugestion',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSugestionComponent implements OnInit {
 
-  constructor() { }
+  public users: any;
+
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
+  getUsers() {
+    this.userService.getUsers(1,10)
+      .subscribe((data: any) => {
+
+        this.users = data.data.result;
+        console.log(this.users);
+      })
+  }
 }

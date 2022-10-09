@@ -11,4 +11,14 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public getUser(id: string) { 
+    var response = this.httpClient.get(`${this.baseURL}/userConsults/user/${id}`)
+      return response
+  }
+
+  public getUsers(page:number, pageSize:number) {
+    var response = this.httpClient.get(`${this.baseURL}/userConsults/users?PageInformation.Page=${page}&PageInformation.PageSize=${pageSize}`)
+    return response
+  }
+
 }

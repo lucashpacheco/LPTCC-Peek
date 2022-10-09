@@ -1,0 +1,81 @@
+.head-banner {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 5px 10px 5px;
+}
+
+.body-banner {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 5px 5px 5px;
+  vertical-align: central;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: -65px;
+  left: 50px;
+  border: solid;
+  border-color: #424242;
+}
+
+.group-title-subtitle {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 5px 5px 5px;
+  vertical-align: bottom;
+  margin: 0px;
+  height: min-content;
+  position: relative;
+  top: 0px;
+  left: -90px;
+}
+
+.profile-button-div {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 5px 5px 5px;
+  align-items: baseline;
+  width: max-content;
+  position: relative;
+  top: 0px;
+  right: 6px;
+  border: double, solid;
+  border-color: #424242;
+}
+
+.peek-textbox {
+  padding: 10px 0px 0px 0px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.content-line {
+
+}
+
+.icon {
+  align-self: center;
+  padding: 0px 15px 0px 0px;
+}
+
+.name {
+  align-self: center;
+  font-size:20px;
+  margin:0px;
+  padding:0px 0px 0px 15px;
+}

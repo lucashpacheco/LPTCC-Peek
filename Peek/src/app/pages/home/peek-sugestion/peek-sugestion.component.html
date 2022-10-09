@@ -1,15 +1,34 @@
 <mat-card>
   <mat-card-title>
-    Basic card
+    Sneak Peek:
   </mat-card-title>
   <mat-divider></mat-divider>
+
   <mat-card-content>
-    <div>
-      <img class="avatar" src="https://via.placeholder.com/50" alt="Alternate Text" /> Fulano de Tal
-      <button class="mdc-button mdc-button--outlined">
-        <span class="mdc-button__ripple"></span>
-        <span class="mdc-button__label">Outlined Button</span>
-      </button>
+    <div class="content-body">
+      <div *ngFor="let peek of peeksSugestion; last as last">
+        <mat-card>
+
+          <div class="content-line">
+            <img class="avatar" src="https://via.placeholder.com/50" alt="Alternate Text" /> <div class="name">{{peek.authorName}}</div>
+            <button mat-stroked-button class="follow">
+              <mat-icon>visibility</mat-icon>
+              <span class="mdc-button__label">See</span>
+            </button>
+          </div>
+          <div class="content-line">
+            {{peek.message}}
+          </div>
+        </mat-card>
+        <br />
+          <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </div>
     </div>
   </mat-card-content>
+  <mat-divider></mat-divider>
+
+  <mat-card-actions style="text-align: center;">
+    Show more
+  </mat-card-actions>
 </mat-card>
+

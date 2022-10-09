@@ -5,15 +5,22 @@
 .content-line {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5px;
 }
 
 .content-body {
   display: flex;
   flex-direction: column;
+  padding:10px;
 }
 
-.add{
-    align-self:end;
+.follow{
+    align-self:center;
+    height: 35px;
 }
 
+.name {
+  align-self: center;
+  height: 25px;
+}

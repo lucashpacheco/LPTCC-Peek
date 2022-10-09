@@ -1,13 +1,42 @@
 <mat-card>
-  <img mat-card-image src="https://via.placeholder.com/900x300" alt="Alternate Text" />
-  <img mat-card-avatar src="https://via.placeholder.com/150">
-  <mat-card-title>
-    Fulano de Tal
-  </mat-card-title>
-  <mat-divider></mat-divider>
+  <div class="head-banner content-line">
+    <mat-icon class="icon">home</mat-icon>
+    <mat-divider [vertical]="true"> </mat-divider>
+    <p class="name">
+       {{user.name}}
+    </p>
+  </div>
+  <img mat-card-image src="https://www.ofitexto.com.br/wp-content/uploads/2020/06/Podem-os-dados-salvar-nossas-cidades-Site-IM-Tematica-900x300.png" alt="Alternate Text" />
+  <div class="body-banner">
+    <img class="avatar" src="https://scontent.fopo2-2.fna.fbcdn.net/v/t1.18169-1/12717342_1966115843614043_6822390657529822606_n.jpg?stp=dst-jpg_p480x480&_nc_cat=104&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=JVJYk5kOqAkAX_a-uMy&_nc_ht=scontent.fopo2-2.fna&oh=00_AT9NQspOZxjmC9d6PhNPMvz_YoZbZ7QP2-anFSeEqwsibw&oe=6366E1C2" alt="Alternate Text" />
+    <div class="group-title-subtitle">
+      <mat-card-title>
+        {{user.name}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        Member since {{randomDate}}
+      </mat-card-subtitle>
+    </div>
+    <div class="profile-button-div">
+      <button mat-stroked-button>
+        <mat-icon>visibility</mat-icon>
+        See profile
+      </button>
+    </div>
+  </div>
 
   <mat-card-content>
-    <div>
+      <mat-divider></mat-divider>
+    <div class="peek-textbox">
+      <form class="peek-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Peek!t</mat-label>
+          <textarea matInput placeholder="What is in my mind?"></textarea>
+        </mat-form-field>
+        <button mat-stroked-button class="example-full-width" color="primary">
+          <mat-icon>send</mat-icon>  Peek!t
+        </button>
+      </form>
 
 
     </div>
