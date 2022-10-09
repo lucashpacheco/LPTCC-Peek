@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthUserModel } from '../../models/AuthUserModel';
@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.refreshToken();
+    console.log("here")
+    console.log(this.route)
   }
 
   loginForm: FormGroup = this.fb.group({
