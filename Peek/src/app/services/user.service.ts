@@ -21,4 +21,9 @@ export class UserService {
     return response
   }
 
+  public getFollowedUsers(userId: string, page: number, pageSize: number) {
+    var response = this.httpClient.get(`${this.baseURL}/userConsults/followedUsers?UserId=${userId}&PageInformation.Page=${page}&PageInformation.PageSize=${pageSize}`)
+    return response
+  }
+
 }

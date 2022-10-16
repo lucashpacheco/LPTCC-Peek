@@ -1,1 +1,76 @@
-<p>register works!</p>
+
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+      <P>Register </P>
+    </div>
+    <mat-card>
+      <div class="text-center">
+        <input class="form-control" type="file"
+               (change)="onChange($event)">
+      </div>
+
+    </mat-card>
+      <br />
+    <form (ngSubmit)="onRegister()" name="registerForm" [formGroup]="registerForm">
+
+      <div class="nameInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name"
+                 matInput
+                 placeholder="Enter your fullname." required />
+          <mat-error *ngIf="!registerForm.controls['name'].valid">
+            Name is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="birthdateInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Birthdate</mat-label>
+          <input type="date"
+                 formControlName="birthdate"
+                 matInput
+                 placeholder="Enter your birthdate." required />
+          <mat-error *ngIf="!registerForm.controls['birthdate'].valid">
+            Birthdate is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="emailInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email"
+                 matInput
+                 placeholder="Enter email address" required />
+          <mat-error *ngIf="!registerForm.controls['email'].valid">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>
+              {{hide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+          </button>
+          <mat-error *ngIf="!registerForm.controls['password'].valid">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-flat-button color="primary">Register</button>
+    </form>
+
+  </mat-card-content>
+</mat-card>
+
+
+<!--<app-file-uploader></app-file-uploader>-->

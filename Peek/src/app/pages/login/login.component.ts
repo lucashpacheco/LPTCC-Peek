@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.refreshToken();
-    console.log("here")
-    console.log(this.route)
   }
 
   loginForm: FormGroup = this.fb.group({
@@ -73,5 +71,9 @@ export class LoginComponent implements OnInit {
 
   onLogout() {
     Security.clear()
+  }
+
+  onRegister() {
+    this.router.navigate(['/register'])
   }
 }

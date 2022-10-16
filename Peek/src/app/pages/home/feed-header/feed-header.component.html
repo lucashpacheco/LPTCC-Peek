@@ -8,7 +8,12 @@
   </div>
   <img mat-card-image src="https://www.ofitexto.com.br/wp-content/uploads/2020/06/Podem-os-dados-salvar-nossas-cidades-Site-IM-Tematica-900x300.png" alt="Alternate Text" />
   <div class="body-banner">
-    <img class="avatar" src="https://scontent.fopo2-2.fna.fbcdn.net/v/t1.18169-1/12717342_1966115843614043_6822390657529822606_n.jpg?stp=dst-jpg_p480x480&_nc_cat=104&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=JVJYk5kOqAkAX_a-uMy&_nc_ht=scontent.fopo2-2.fna&oh=00_AT9NQspOZxjmC9d6PhNPMvz_YoZbZ7QP2-anFSeEqwsibw&oe=6366E1C2" alt="Alternate Text" />
+    <div *ngIf="user.profilePhoto != undefined">
+      <img class="avatar" src="{{user.profilePhoto}}" alt="Alternate Text" />
+    </div>
+    <div *ngIf="user.profilePhoto == undefined">
+      <img class="avatar" src="https://via.placeholder.com/150" alt="Alternate Text" />
+    </div>
     <div class="group-title-subtitle">
       <mat-card-title>
         {{user.name}}
@@ -28,10 +33,10 @@
   <mat-card-content>
       <mat-divider></mat-divider>
     <div class="peek-textbox">
-      <form class="peek-form">
+      <form class="peek-form" (ngSubmit)="sendPeek()" name="peekForm" [formGroup]="peekForm">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Peek!t</mat-label>
-          <textarea matInput placeholder="What is in my mind?"></textarea>
+          <textarea formControlName="peek" matInput placeholder="What is in my mind?"></textarea>
         </mat-form-field>
         <button mat-stroked-button class="example-full-width" color="primary">
           <mat-icon>send</mat-icon>  Peek!t

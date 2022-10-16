@@ -8,7 +8,12 @@
     <div class="content-body">
       <div *ngFor="let user of users; last as last">
         <div class="content-line">
-          <img class="avatar" src="https://via.placeholder.com/50" alt="Alternate Text" /> <div class="name">{{user.name}}</div>
+          <div class="content-line-user-container" *ngIf="user.profilePhoto != undefined">
+            <img class="avatar" src="{{user.profilePhoto}}" alt="Alternate Text" /> <div class="name">{{user.name}}</div>
+          </div>
+          <div class="content-line-user-container" *ngIf="user.profilePhoto == undefined">
+            <img class="avatar" src="https://via.placeholder.com/50" alt="Alternate Text" /> <div class="name">{{user.name}}</div>
+          </div>
           <button mat-stroked-button class="follow">
             <mat-icon>person_add</mat-icon>
             <span class="mdc-button__label">  Follow</span>

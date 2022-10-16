@@ -20,9 +20,8 @@ export class UserSugestionComponent implements OnInit {
   getUsers() {
     this.userService.getUsers(1,10)
       .subscribe((data: any) => {
-
         this.users = data.data.result;
-        console.log(this.users);
+        
       })
   }
 }

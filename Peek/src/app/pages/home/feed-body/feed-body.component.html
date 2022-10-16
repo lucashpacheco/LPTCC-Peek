@@ -1,64 +1,43 @@
 <mat-card>
-  <mat-card-title>
-    Peeks
-  </mat-card-title>
+  <mat-card-actions>
+    <div class="peek-footer">
+      <button mat-button class="peek-buttons" color="primary"><mat-icon>network_wifi</mat-icon> Worldwide</button>
+      <mat-divider [vertical]="true"> </mat-divider>
+      <button mat-button class="peek-buttons" color="primary" disabled><mat-icon fontIcon="people"></mat-icon>Followed</button>
+      <mat-divider [vertical]="true"> </mat-divider>
+      <button mat-button class="peek-buttons" color="primary" disabled><mat-icon fontIcon="person"></mat-icon> Mine</button>
+    </div>
+  </mat-card-actions>
   <mat-divider></mat-divider>
   <mat-card-content>
     <br />
-    <mat-card>
-      <div>
-        <img mat-card-avatar src="https://via.placeholder.com/150">
-        Fulano de Tal
-      </div>
-      <br />
-      <div>
-        Exemplo de peek , por acaso , qualquer coisa , nao importa , so escreve um pouco e já esta.
-      </div>
-      <br />
-      <mat-divider></mat-divider>
-      <mat-card-actions>
-        <div class="peek-footer">
-          <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> Like</button>
-          <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> Comments</button>
+
+    <div *ngFor="let peek of worldwidePeeks; last as last">
+      <mat-card>
+        <div *ngIf="peek.authorProfilePhoto != undefined">
+          <img mat-card-avatar src="{{peek.authorProfilePhoto}}">
+          {{peek.authorName}}
         </div>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card>
-      <div>
-        <img mat-card-avatar src="https://via.placeholder.com/150">
-        Fulano de Tal
-      </div>
-      <br />
-      <div>
-        Exemplo de peek , por acaso , qualquer coisa , nao importa , so escreve um pouco e já esta.
-      </div>
-      <br />
-      <mat-divider></mat-divider>
-      <mat-card-actions>
-        <div class="peek-footer">
-          <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> Like</button>
-          <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> Comments</button>
+
+        <div *ngIf="peek.authorProfilePhoto == undefined">
+          <img mat-card-avatar src="https://via.placeholder.com/150">
+          {{peek.authorName}}
         </div>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card>
-      <div>
-        <img mat-card-avatar src="https://via.placeholder.com/150">
-        Fulano de Tal
-      </div>
-      <br />
-      <div>
-        Exemplo de peek , por acaso , qualquer coisa , nao importa , so escreve um pouco e já esta.
-      </div>
-      <br />
-      <mat-divider></mat-divider>
-      <mat-card-actions>
-        <div class="peek-footer">
-          <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> Like</button>
-          <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> Comments</button>
+        <br />
+        <div>
+          {{peek.message}}
         </div>
-      </mat-card-actions>
-    </mat-card>
+        <br />
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <div class="peek-footer">
+            <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> Like</button>
+            <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> Comments</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    
   </mat-card-content>
 
 </mat-card>
