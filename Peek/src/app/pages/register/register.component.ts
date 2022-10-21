@@ -68,7 +68,12 @@ export class RegisterComponent implements OnInit {
     Util.getBase64(this.file).then( x =>
     {
       this.photo = x;
-      })
+    })
+    this.showPreview()
+  }
+
+  showPreview() {
+    document.getElementById("avatar")?.removeAttribute("hidden")
   }
 
   // OnClick of button Upload

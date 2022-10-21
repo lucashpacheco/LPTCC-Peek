@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { CreatePeekCommand } from '../models/Commands/CreatePeekCommand';
+import { CreateLikeCommand } from '../models/Commands/LikeCommand';
+import { UnlikeCommand } from '../models/Commands/UnlikeCommand';
 import { GetPeekRequest } from '../models/Consults/GetPeeksRequest';
 
 @Injectable({
@@ -14,13 +16,25 @@ export class PeekService {
   constructor(private httpClient: HttpClient) { }
 
   public getPeeks(userId: string, page: number, pageSize: number) {
-    var filters = new GetPeekRequest("", page, pageSize);
+    var filters = new GetPeekRequest(userId, page, pageSize);
     var response = this.httpClient.post(`${this.baseURL}/peekReader/peeks`, filters )
     return response
   }
 
   public sendPeeks(createPeekCommand: CreatePeekCommand) {
     var result = this.httpClient.post<any>(`${this.baseURL}/peekWriter/peek`, createPeekCommand)
+
+    return result
+  }
+
+  public likePeek(likeCommand: CreateLikeCommand) {
+    var result = this.httpClient.post<any>(`${this.baseURL}/peekWriter/like`, likeCommand)
+
+    return result
+  }
+
+  public unlikePeek(unlikeCommand: UnlikeCommand) {
+    var result = this.httpClient.delete<any>(`${this.baseURL}/peekWriter/like/${unlikeCommand.peekId}/${unlikeCommand.userId}`)
 
     return result
   }

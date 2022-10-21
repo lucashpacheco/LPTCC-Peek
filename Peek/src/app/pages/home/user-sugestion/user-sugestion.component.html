@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-title>
-    You should know:
+    Last incommers:
   </mat-card-title>
   <mat-divider></mat-divider>
 
@@ -14,9 +14,13 @@
           <div class="content-line-user-container" *ngIf="user.profilePhoto == undefined">
             <img class="avatar" src="https://via.placeholder.com/50" alt="Alternate Text" /> <div class="name">{{user.name}}</div>
           </div>
-          <button mat-stroked-button class="follow">
+          <button (click)="onFollow(user.id)" mat-stroked-button class="follow" *ngIf="!user.followed" color="primary">
             <mat-icon>person_add</mat-icon>
-            <span class="mdc-button__label">  Follow</span>
+            <span class="mdc-button__label"> Follow</span>
+          </button>
+          <button (click)="onUnfollow(user.id)" mat-stroked-button class="follow" *ngIf="user.followed">
+            <mat-icon>person_remove</mat-icon>
+            <span class="mdc-button__label"> Unfollow</span>
           </button>
         </div>
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>

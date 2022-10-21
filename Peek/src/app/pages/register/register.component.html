@@ -2,16 +2,17 @@
 <mat-card>
   <mat-card-content>
     <div class="header">
-      <P>Register </P>
+      <h2>Register</h2>
     </div>
     <mat-card>
       <div class="text-center">
+        <img id="avatar" mat-card-avatar src="{{photo}}" hidden />
         <input class="form-control" type="file"
                (change)="onChange($event)">
       </div>
 
     </mat-card>
-      <br />
+    <br />
     <form (ngSubmit)="onRegister()" name="registerForm" [formGroup]="registerForm">
 
       <div class="nameInput">

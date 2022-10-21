@@ -70,4 +70,8 @@ export class Security {
     else
       return false;
   }
+
+  public static getUserIdbyToken() {
+    return this.helper.decodeToken(Security.getToken() as string).sub
+  }
 }
