@@ -6,7 +6,8 @@ COPY . ./app
 WORKDIR /app/Peek
 RUN ls /app
 RUN yarn install && yarn build
-
+RUN ls /app/Peek
+RUN ls /app/Peek/dist
 FROM nginx:stable-alpine as production-stage
 VOLUME /var/log/nginx
 #COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
