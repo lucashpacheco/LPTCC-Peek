@@ -1,7 +1,7 @@
 FROM node:16.10.0-alpine as build-stage
 RUN apk update && apk add git
-RUN ls ./
-RUN ls .
+# RUN ls ./
+# RUN ls .
 COPY . ./app
 WORKDIR /app/Peek
 RUN ls /app
@@ -13,9 +13,9 @@ VOLUME ./var/log/nginx
 RUN pwd
 RUN ls ./
 RUN ls .
-RUN ls /app/Peek/dist --from=build-stage
 # RUN ls /app
 COPY --from=build-stage /app/Peek/dist /usr/share/nginx/html
+RUN ls /app/Peek/dist
 RUN ls /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
