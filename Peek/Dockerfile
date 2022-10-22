@@ -1,5 +1,6 @@
 FROM node:16.10.0-alpine as build-stage
 RUN apk update && apk add git
+RUN ls .
 COPY . ./app
 WORKDIR /app
 RUN yarn install && yarn build
