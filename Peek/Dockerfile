@@ -16,7 +16,7 @@ RUN pwd
 RUN ls ./
 RUN ls ./usr/share/nginx/html
 # RUN ls /app
-COPY --from=build-stage /app/Peek/dist /usr/share/nginx/html
+COPY --from=build-stage /app/Peek/dist/peek /usr/share/nginx/html
 # RUN ls /app/Peek/dist
 RUN ls /usr/share/nginx/html
 EXPOSE 80
