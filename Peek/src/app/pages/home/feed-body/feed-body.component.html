@@ -32,7 +32,7 @@
         <mat-card-actions>
           <div class="peek-footer">
             <button *ngIf="!peek.liked" (click)="onLike(peek.id)" mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
-            <button *ngIf="peek.liked" (click)="onLike(peek.id)" mat-button class="peek-buttons" color="grey"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
+            <button *ngIf="peek.liked" (click)="onUnlike(peek.id)" mat-button class="peek-buttons" color="grey"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
             <button mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
           </div>
         </mat-card-actions>

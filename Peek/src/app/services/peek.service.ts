@@ -34,7 +34,7 @@ export class PeekService {
   }
 
   public unlikePeek(unlikeCommand: UnlikeCommand) {
-    var result = this.httpClient.delete<any>(`${this.baseURL}/peekWriter/like/${unlikeCommand.peekId}/${unlikeCommand.userId}`)
+    var result = this.httpClient.delete<any>(`${this.baseURL}/peekWriter/like?PeekId=${unlikeCommand.peekId}&UserId=${unlikeCommand.userId}`)
 
     return result
   }
