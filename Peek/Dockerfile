@@ -3,7 +3,7 @@ RUN apk update && apk add git
 RUN ls ./
 RUN ls .
 COPY . ./app
-WORKDIR /app
+WORKDIR /app/Peek
 RUN ls /app
 RUN yarn install && yarn build
 
