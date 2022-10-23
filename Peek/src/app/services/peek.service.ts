@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { CreatePeekCommand } from '../models/Commands/CreatePeekCommand';
 import { CreateLikeCommand } from '../models/Commands/LikeCommand';
 import { UnlikeCommand } from '../models/Commands/UnlikeCommand';
+import { GetCommentsRequest } from '../models/Consults/GetCommentsRequest';
 import { GetPeekRequest } from '../models/Consults/GetPeeksRequest';
 
 @Injectable({
@@ -35,6 +36,12 @@ export class PeekService {
 
   public unlikePeek(unlikeCommand: UnlikeCommand) {
     var result = this.httpClient.delete<any>(`${this.baseURL}/peekWriter/like?PeekId=${unlikeCommand.peekId}&UserId=${unlikeCommand.userId}`)
+
+    return result
+  }
+
+  public getComments(getComments: GetCommentsRequest) {
+    var result = this.httpClient.get<any>(`${this.baseURL}/peekReader/comments?PeekId=${getComments.peekId}&PageInformation.Page=${getComments.pageInformation.page}&PageInformation.PageSize=${getComments.pageInformation.pageSize}`)
 
     return result
   }

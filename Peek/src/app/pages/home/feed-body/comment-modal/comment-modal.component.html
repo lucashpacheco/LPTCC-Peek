@@ -1,0 +1,33 @@
+
+<mat-card>
+  <mat-card-title>
+    Comments:
+  </mat-card-title>
+  
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <br />
+
+    <div *ngFor="let comment of data;last as last">
+      <mat-card>
+        <!--<div *ngIf="peek.authorProfilePhoto != undefined">
+          <img mat-card-avatar src="{{peek.authorProfilePhoto}}">
+          {{peek.authorName}}
+        </div>-->
+
+        <div *ngIf="comment.authorProfilePhoto == undefined">
+          <img mat-card-avatar src="https://via.placeholder.com/150">
+          {{comment.authorId}}
+        </div>
+        <br />
+        <div>
+          {{comment.message}}
+        </div>
+        <br />
+        <mat-divider></mat-divider>
+       
+      </mat-card>
+    </div>
+
+  </mat-card-content>
+</mat-card>

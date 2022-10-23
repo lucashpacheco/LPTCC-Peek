@@ -58,6 +58,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadComponent } from './pages/register/file-uploader/file-uploader.component';
+import { CommentModalComponent } from './pages/home/feed-body/comment-modal/comment-modal.component';
 
 
 
@@ -71,7 +72,8 @@ import { FileUploadComponent } from './pages/register/file-uploader/file-uploade
     FeedBodyComponent,
     UserSugestionComponent,
     PeekSugestionComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    CommentModalComponent
   ],
   imports: [
     BrowserModule,

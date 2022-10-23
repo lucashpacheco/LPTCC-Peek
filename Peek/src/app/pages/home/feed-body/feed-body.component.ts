@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { CreateLikeCommand } from '../../../models/Commands/LikeCommand';
 import { UnlikeCommand } from '../../../models/Commands/UnlikeCommand';
+import { GetCommentsRequest } from '../../../models/Consults/GetCommentsRequest';
 import { Like } from '../../../models/Like';
 import { PagedResult } from '../../../models/PagedResult';
+import { PageInformation } from '../../../models/PageInformation';
 import { Peek } from '../../../models/Peek';
 import { ResponseBase } from '../../../models/ResponseBase';
 import { User } from '../../../models/User';
@@ -21,6 +23,7 @@ export class FeedBodyComponent implements OnInit {
   public followedUsers: any;
   private userId: any;
 
+  public commentsOut: any;
   constructor(private peekService: PeekService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -36,7 +39,6 @@ export class FeedBodyComponent implements OnInit {
       .subscribe(peeks => {
         var data = peeks as ResponseBase<PagedResult<Peek>>;
         this.worldwidePeeks = data.data.result
-        console.log(this.worldwidePeeks)
       })
   }
 
@@ -62,6 +64,31 @@ export class FeedBodyComponent implements OnInit {
       .subscribe(success => {
         this.getWorldwidePeeks();
       })
+  }
+
+  onGetComments(peekId: string) {
+    var getCommentsRequest = new GetCommentsRequest(peekId, 1, 10);
+    this.peekService.getComments(getCommentsRequest)
+      .subscribe(data => {
+        var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
+        //var otherPeeks = this.worldwidePeeks.filter((x: any) => x.id != peekId) as any;
+        peek.commentsShowed = true;
+        peek.comments = data.data.result;
+        console.log("body-feed")
+        console.log(peek)
+
+      })
+  }
+
+  onHideComments(peekId: string) {
+    var getCommentsRequest = new GetCommentsRequest(peekId, 1, 10);
+
+        var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
+        //var otherPeeks = this.worldwidePeeks.filter((x: any) => x.id != peekId) as any;
+        peek.commentsShowed = false;
+        console.log("body-feed")
+        console.log(peek)
+
   }
 
 }
