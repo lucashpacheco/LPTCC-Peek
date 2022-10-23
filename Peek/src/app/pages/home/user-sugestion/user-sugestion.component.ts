@@ -24,7 +24,7 @@ export class UserSugestionComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers(Security.getUserIdbyToken() , 1,10)
+    this.userService.getUsers(Security.getUserIdbyToken() , 1,6)
       .subscribe((data: any) => {
         this.users = data.data.result;
       })

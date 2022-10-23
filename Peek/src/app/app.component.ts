@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './services/login-service.service';
+import { Security } from './utils/security.util';
 
 
 @Component({
@@ -27,6 +28,11 @@ export class AppComponent {
       this.showMenu = show;
     }
       );
+  }
+
+  onLogout() {
+    Security.clear()
+    window.location.reload()
   }
 }
 
