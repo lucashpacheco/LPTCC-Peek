@@ -31,7 +31,7 @@ export class UserSugestionComponent implements OnInit {
   }
 
   getFollowedUsers() {
-    this.userService.getFollowedUsers(Security.getUserIdbyToken(), 1, 10)
+    this.userService.getFollowedUsers(Security.getUserIdbyToken(), 1, 15)
       .subscribe((data: any) => {
         this.followedUsers = data.data.result;
       })
