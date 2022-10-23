@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { CreateCommentCommand } from '../models/Commands/CreateCommentCommand';
 import { CreatePeekCommand } from '../models/Commands/CreatePeekCommand';
 import { CreateLikeCommand } from '../models/Commands/LikeCommand';
 import { UnlikeCommand } from '../models/Commands/UnlikeCommand';
@@ -24,6 +25,12 @@ export class PeekService {
 
   public sendPeeks(createPeekCommand: CreatePeekCommand) {
     var result = this.httpClient.post<any>(`${this.baseURL}/peekWriter/peek`, createPeekCommand)
+
+    return result
+  }
+
+  public sendComment(createCommentCommand: CreateCommentCommand) {
+    var result = this.httpClient.post<any>(`${this.baseURL}/peekWriter/comment`, createCommentCommand)
 
     return result
   }

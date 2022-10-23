@@ -31,13 +31,13 @@
         <mat-divider></mat-divider>
         <mat-card-actions>
           <div class="peek-footer">
-            <button *ngIf="!peek.liked" (click)="onLike(peek.id)" mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
-            <button *ngIf="peek.liked" (click)="onUnlike(peek.id)" mat-button class="peek-buttons" color="grey"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
-            <button  *ngIf="!peek.commentsShowed" mat-button (click)="onGetComments(peek.id)" class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
-            <button  *ngIf="peek.commentsShowed" mat-button (click)="onHideComments(peek.id)" class="peek-buttons" color="grey"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
+            <button *ngIf="!peek.liked" (click)="onLike(peek.id)" mat-button class="peek-buttons" color="grey" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
+            <button *ngIf="peek.liked" (click)="onUnlike(peek.id)" mat-button class="peek-buttons" color="primary" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
+            <button  *ngIf="!peek.commentsShowed" mat-button (click)="onGetComments(peek.id)" class="peek-buttons" color="grey" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
+            <button  *ngIf="peek.commentsShowed" mat-button (click)="onHideComments(peek.id)" class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
           </div>
         </mat-card-actions>
-        <app-comment-modal *ngIf="peek.commentsShowed" [data]="peek.comments"></app-comment-modal>
+        <app-comment-modal *ngIf="peek.commentsShowed" [data]="peek.comments" [peekId]="peek.id"></app-comment-modal>
       </mat-card>
     </div>
 
