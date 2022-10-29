@@ -1,23 +1,20 @@
 
-<mat-card>
+<mat-card class="main">
   <mat-card-title>
     Comments:
   </mat-card-title>
   
   <mat-divider></mat-divider>
   <mat-card-content>
-    <br />
-
     <div *ngFor="let comment of data;last as last">
       <mat-card>
-        <!--<div *ngIf="peek.authorProfilePhoto != undefined">
-        <img mat-card-avatar src="{{peek.authorProfilePhoto}}">
-        {{peek.authorName}}
-      </div>-->
+        <div *ngIf="comment.authorProfilePhoto != undefined">
+          <img mat-card-avatar src="{{comment.authorProfilePhoto}}">
+          {{comment.authorName}}
+        </div>
 
         <div *ngIf="comment.authorProfilePhoto == undefined">
           <img mat-card-avatar src="https://via.placeholder.com/150">
-          {{comment.authorId}}
         </div>
         <br />
         <div>
@@ -27,10 +24,11 @@
         <mat-divider></mat-divider>
 
       </mat-card>
-    </div>
-    <mat-card>
       <br />
-      <div>
+    </div>
+    <mat-card class="main">
+      <br />
+      <div class="main">
         <form class="comment-form" (ngSubmit)="sendComment(peekId)" name="commentForm" [formGroup]="commentForm">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Comment!t</mat-label>

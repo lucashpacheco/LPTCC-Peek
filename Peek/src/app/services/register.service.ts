@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { RegisterModel } from '../models/RegisterModel';
+import { RegisterCommand } from '../models/Commands/RegisterCommand';
 import { Security } from '../utils/security.util';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class RegisterService {
 
   constructor(private httpClient: HttpClient) { }
 
-  registerUser(registerData: RegisterModel) {
+  registerUser(registerData: RegisterCommand) {
     console.log("service reg")
     console.log(registerData)
     var result = this.httpClient.post<any>(`${this.baseURL}/userCommands/user`, registerData);

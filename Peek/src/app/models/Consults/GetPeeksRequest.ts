@@ -1,4 +1,4 @@
-import { PageInformation } from "../PageInformation";
+import { PageInformation } from "../Common/PageInformation";
 
 export class GetPeekRequest {
   public userId!: string[];

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreatePeekCommand } from '../../../models/Commands/CreatePeekCommand';
-import { User } from '../../../models/User';
+import { User } from '../../../models/Domain/User';
 import { PeekService } from '../../../services/peek.service';
 import { UserService } from '../../../services/user.service';
 import { Security } from '../../../utils/security.util';

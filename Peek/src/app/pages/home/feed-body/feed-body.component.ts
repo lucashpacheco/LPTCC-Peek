@@ -1,13 +1,13 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { CreateLikeCommand } from '../../../models/Commands/LikeCommand';
 import { UnlikeCommand } from '../../../models/Commands/UnlikeCommand';
+import { PagedResult } from '../../../models/Common/PagedResult';
+import { ResponseBase } from '../../../models/Common/ResponseBase';
 import { GetCommentsRequest } from '../../../models/Consults/GetCommentsRequest';
-import { Like } from '../../../models/Like';
-import { PagedResult } from '../../../models/PagedResult';
-import { PageInformation } from '../../../models/PageInformation';
-import { Peek } from '../../../models/Peek';
-import { ResponseBase } from '../../../models/ResponseBase';
-import { User } from '../../../models/User';
+import { Comment } from '../../../models/Domain/Comment';
+import { Like } from '../../../models/Domain/Like';
+import { Peek } from '../../../models/Domain/Peek';
+import { User } from '../../../models/Domain/User';
 import { PeekService } from '../../../services/peek.service';
 import { UserService } from '../../../services/user.service';
 import { Security } from '../../../utils/security.util';
@@ -23,6 +23,8 @@ export class FeedBodyComponent implements OnInit {
   public followedUsers: any;
   private userId: any;
 
+  page = 1;
+
   public commentsOut: any;
   constructor(private peekService: PeekService, private userService: UserService) { }
 
@@ -34,8 +36,7 @@ export class FeedBodyComponent implements OnInit {
   }
 
   getWorldwidePeeks() {
-
-    this.peekService.getPeeks(this.userId, 1, 10)
+    this.peekService.getPeeks(this.userId, 1, 5)
       .subscribe(peeks => {
         var data = peeks as ResponseBase<PagedResult<Peek>>;
         this.worldwidePeeks = data.data.result
@@ -67,28 +68,35 @@ export class FeedBodyComponent implements OnInit {
   }
 
   onGetComments(peekId: string) {
-    var getCommentsRequest = new GetCommentsRequest(peekId, 1, 10);
+    var getCommentsRequest = new GetCommentsRequest(peekId, 1, 5);
     this.peekService.getComments(getCommentsRequest)
       .subscribe(data => {
         var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
-        //var otherPeeks = this.worldwidePeeks.filter((x: any) => x.id != peekId) as any;
         peek.commentsShowed = true;
-        peek.comments = data.data.result;
+        peek.comments = data.data.result as Comment[];
         console.log("body-feed")
-        console.log(peek)
+        console.log(peek.comments)
 
       })
   }
 
   onHideComments(peekId: string) {
-    var getCommentsRequest = new GetCommentsRequest(peekId, 1, 10);
+    var getCommentsRequest = new GetCommentsRequest(peekId, 1, 5);
 
-        var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
-        //var otherPeeks = this.worldwidePeeks.filter((x: any) => x.id != peekId) as any;
-        peek.commentsShowed = false;
-        console.log("body-feed")
-        console.log(peek)
+    var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
+    peek.commentsShowed = false;
+    console.log("body-feed")
+    console.log(peek)
 
+  }
+
+  onScroll(): void {
+    console.log("Scrolled");
+    this.peekService.getPeeks(this.userId, ++this.page, 5)
+      .subscribe(peeks => {
+        var data = peeks as ResponseBase<PagedResult<Peek>>;
+        this.worldwidePeeks.push(...data.data.result);
+      })
   }
 
 }

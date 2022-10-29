@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthUserModel } from '../../models/AuthUserModel';
-import { RegisterModel } from '../../models/RegisterModel';
+import { RegisterCommand } from '../../models/Commands/RegisterCommand';
 import { FileUploadService } from '../../services/file-uploader.service';
 import { RegisterService } from '../../services/register.service';
 import { Security } from '../../utils/security.util';
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    var registerData = this.registerForm.getRawValue() as RegisterModel;
+    var registerData = this.registerForm.getRawValue() as RegisterCommand;
     registerData.profilePhoto = this.photo;
 
     console.log("on register")

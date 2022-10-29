@@ -1,4 +1,4 @@
-import { Like } from "../Like"
+import { Like } from "../Domain/Like"
 
 export class CreateLikeCommand {
   public peekId!: string;

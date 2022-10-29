@@ -1,4 +1,4 @@
-import { Comment } from "../Comment"
+import { Comment } from "../Domain/Comment"
 
 export class CreateCommentCommand {
   public peekId!: string;

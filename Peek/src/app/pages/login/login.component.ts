@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthUserModel } from '../../models/AuthUserModel';
-import { LoginModel } from '../../models/LoginModel';
+import { LoginCommand } from '../../models/Commands/LoginCommand';
 import { TokenModel } from '../../models/TokenModel';
 import { LoginService } from '../../services/login-service.service';
 import { Security } from '../../utils/security.util';
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
-    var loginData = this.loginForm.getRawValue() as LoginModel;
+    var loginData = this.loginForm.getRawValue() as LoginCommand;
     this.loginService.login(loginData)
       .subscribe(
         token => {

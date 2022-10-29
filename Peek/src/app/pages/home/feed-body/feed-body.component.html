@@ -12,36 +12,46 @@
   <mat-card-content>
     <br />
 
-    <div *ngFor="let peek of worldwidePeeks; last as last">
-      <mat-card>
-        <div *ngIf="peek.authorProfilePhoto != undefined">
-          <img mat-card-avatar src="{{peek.authorProfilePhoto}}">
-          {{peek.authorName}}
-        </div>
+    <div infinite-scroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="1000"
+         (scrolled)="onScroll()">
+      <div *ngFor="let peek of worldwidePeeks; last as last">
+        <mat-card class="main">
 
-        <div *ngIf="peek.authorProfilePhoto == undefined">
-          <img mat-card-avatar src="https://via.placeholder.com/150">
-          {{peek.authorName}}
-        </div>
-        <br />
-        <div>
-          {{peek.message}}
-        </div>
-        <br />
-        <mat-divider></mat-divider>
-        <mat-card-actions>
-          <div class="peek-footer">
-            <button *ngIf="!peek.liked" (click)="onLike(peek.id)" mat-button class="peek-buttons" color="grey" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
-            <button *ngIf="peek.liked" (click)="onUnlike(peek.id)" mat-button class="peek-buttons" color="primary" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
-            <button  *ngIf="!peek.commentsShowed" mat-button (click)="onGetComments(peek.id)" class="peek-buttons" color="grey" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
-            <button  *ngIf="peek.commentsShowed" mat-button (click)="onHideComments(peek.id)" class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
+          <div *ngIf="peek.authorProfilePhoto != undefined">
+            <img mat-card-avatar src="{{peek.authorProfilePhoto}}">
+            {{peek.authorName}}
           </div>
-        </mat-card-actions>
-        <app-comment-modal *ngIf="peek.commentsShowed" [data]="peek.comments" [peekId]="peek.id"></app-comment-modal>
-      </mat-card>
+
+          <div *ngIf="peek.authorProfilePhoto == undefined">
+            <img mat-card-avatar src="https://via.placeholder.com/150">
+            {{peek.authorName}}
+          </div>
+          <br />
+          <div>
+            {{peek.message}}
+          </div>
+          <br />
+          <mat-divider></mat-divider>
+          <mat-card-actions>
+            <div class="peek-footer">
+              <button *ngIf="!peek.liked" (click)="onLike(peek.id)" mat-button class="peek-buttons" color="grey"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
+              <button *ngIf="peek.liked" (click)="onUnlike(peek.id)" mat-button class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="favorite"></mat-icon> {{peek.likesCount}}</button>
+              <button *ngIf="!peek.commentsShowed" mat-button (click)="onGetComments(peek.id)" class="peek-buttons" color="grey"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
+              <button *ngIf="peek.commentsShowed" mat-button (click)="onHideComments(peek.id)" class="peek-buttons" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon> {{peek.commentsCount}}</button>
+            </div>
+          </mat-card-actions>
+          <app-comment-modal *ngIf="peek.commentsShowed" [data]="peek.comments" [peekId]="peek.id"></app-comment-modal>
+        </mat-card>
+        <br />
+      </div>
     </div>
 
   </mat-card-content>
+  <mat-card-actions style="text-align: center;">
+    <button  mat-button (click)="onScroll()" class="peek-buttons" color="primary"> Show more ... </button>
+</mat-card-actions>
 </mat-card>
 
 
