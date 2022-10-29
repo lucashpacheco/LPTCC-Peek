@@ -7,6 +7,9 @@ export class Peek {
   public createdDate!: Date;
   public commentsShowed: boolean = false;
   public comments!: any;
+  public liked!: boolean;
+  public likesCount!: number;
+
 
 }
 

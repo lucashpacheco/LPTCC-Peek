@@ -55,14 +55,21 @@ export class FeedBodyComponent implements OnInit {
     var likeCommand = new CreateLikeCommand(peekId, new Like(this.userId))
     this.peekService.likePeek(likeCommand)
       .subscribe(success => {
+        var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
+        peek.liked = true;
+        peek.likesCount = ++peek.likesCount;
         this.getWorldwidePeeks();
       })
   }
 
   onUnlike(peekId: string) {
     var likeCommand = new UnlikeCommand(peekId, this.userId)
+    
     this.peekService.unlikePeek(likeCommand)
       .subscribe(success => {
+        var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
+        peek.liked = false;
+        peek.likesCount = peek.likesCount - 1;
         this.getWorldwidePeeks();
       })
   }

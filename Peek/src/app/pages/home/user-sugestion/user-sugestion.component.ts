@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UnfollowCommand } from '../../../models/Commands/FollowCommand';
 import { FollowCommand } from '../../../models/Commands/UnfollowCommand';
+import { User } from '../../../models/Domain/User';
 import { UserService } from '../../../services/user.service';
 import { Security } from '../../../utils/security.util';
 
@@ -49,9 +50,11 @@ export class UserSugestionComponent implements OnInit {
     console.log(test)
   }
 
-  onFollow(followUserId:string) {
+  onFollow(followUserId: string) {
     this.userService.followUser(new FollowCommand(Security.getUserIdbyToken(), followUserId))
       .subscribe((data: any) => {
+        var user = this.users.filter((x: any) => x.id == followUserId)[0] as User;
+        user.followed = true;
         this.followedUsers = data.data.result;
         this.getUsers();
       })
@@ -60,6 +63,8 @@ export class UserSugestionComponent implements OnInit {
   onUnfollow(followUserId: string) {
     this.userService.unfollowUser(new UnfollowCommand(Security.getUserIdbyToken(), followUserId))
       .subscribe((data: any) => {
+        var user = this.users.filter((x: any) => x.id == followUserId)[0] as User;
+        user.followed = false;
         this.followedUsers = data.data.result;
         this.getUsers();
       })
