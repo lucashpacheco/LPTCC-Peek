@@ -59,6 +59,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadComponent } from './pages/register/file-uploader/file-uploader.component';
 import { CommentModalComponent } from './pages/home/feed-body/comment-modal/comment-modal.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -134,6 +135,7 @@ import { CommentModalComponent } from './pages/home/feed-body/comment-modal/comm
     PortalModule,
     ScrollingModule,
     ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent],
