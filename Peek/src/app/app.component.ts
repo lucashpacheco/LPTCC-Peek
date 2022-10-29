@@ -34,5 +34,13 @@ export class AppComponent {
     Security.clear()
     window.location.reload()
   }
+
+  goToUsers() {
+    this.router.navigate(['/users'])
+  }
+
+  goToHome() {
+    this.router.navigate(['/home'])
+  }
 }
 

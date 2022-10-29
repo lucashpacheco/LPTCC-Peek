@@ -1,0 +1,36 @@
+.avatar {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.content-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.content-line-user-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.content-body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.follow {
+  align-self: center;
+  height: 35px;
+}
+
+.name {
+  align-self: center;
+  height: 25px;
+  padding: 15px;
+}

@@ -15,7 +15,7 @@
 
           <mat-nav-list>
             <mat-list-item>
-              <button mat-button class="menu-button">
+              <button mat-button class="menu-button" (click)="goToHome()">
                 <mat-icon>home</mat-icon>
                 <span> Home</span>
               </button>
@@ -27,7 +27,7 @@
               </button>
             </mat-list-item>
             <mat-list-item>
-              <button mat-button class="menu-button">
+              <button mat-button class="menu-button" (click)="goToUsers()">
                 <mat-icon>people</mat-icon>
                 <span> Users</span>
               </button>
@@ -69,7 +69,7 @@
 
     </mat-sidenav>
     <mat-sidenav-content class="content-body">
-      <div style="height: 92vh">
+      <div style="height: 92vh; min-width:600px;">
         <div>
           <router-outlet></router-outlet>
         </div>

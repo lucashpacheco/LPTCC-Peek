@@ -1,0 +1,46 @@
+<mat-card>
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <span matPrefix> </span>
+        <input type="tel" matInput /> <!--placeholder="Search" name="search" [(ngModel)]="search">-->
+        <button matSuffix mat-button><mat-icon>search</mat-icon></button>
+      </mat-form-field>
+      <br />
+      </form>
+  </mat-card-content>
+</mat-card>
+<br />
+
+<mat-card>
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+    <div class="content-body">
+      <div *ngFor="let user of users; last as last">
+        <div class="content-line">
+          <div class="content-line-user-container" *ngIf="user.profilePhoto != undefined">
+            <img class="avatar" src="{{user.profilePhoto}}" alt="Alternate Text" /> <div class="name">{{user.name}}</div>
+          </div>
+          <div class="content-line-user-container" *ngIf="user.profilePhoto == undefined">
+            <img class="avatar" src="https://via.placeholder.com/50" alt="Alternate Text" /> <div class="name">{{user.name}}</div>
+          </div>
+          <button (click)="onFollow(user.id)" mat-stroked-button class="follow" *ngIf="!user.followed" color="primary">
+            <mat-icon>person_add</mat-icon>
+            <span class="mdc-button__label"> Follow</span>
+          </button>
+          <button (click)="onUnfollow(user.id)" mat-stroked-button class="follow" *ngIf="user.followed">
+            <mat-icon>person_remove</mat-icon>
+            <span class="mdc-button__label"> Unfollow</span>
+          </button>
+        </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+
+  <mat-card-actions style="text-align: center;">
+    Show more
+  </mat-card-actions>
+</mat-card>

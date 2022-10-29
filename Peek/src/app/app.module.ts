@@ -60,6 +60,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadComponent } from './pages/register/file-uploader/file-uploader.component';
 import { CommentModalComponent } from './pages/home/feed-body/comment-modal/comment-modal.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { UsersComponent } from './pages/users/users.component';
+import { PublicityComponent } from './pages/home/publicity/publicity.component';
 
 
 
@@ -74,7 +76,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UserSugestionComponent,
     PeekSugestionComponent,
     FileUploadComponent,
-    CommentModalComponent
+    CommentModalComponent,
+    UsersComponent,
+    PublicityComponent
   ],
   imports: [
     BrowserModule,
