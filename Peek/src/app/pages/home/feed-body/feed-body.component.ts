@@ -32,7 +32,9 @@ export class FeedBodyComponent implements OnInit {
     this.userId = Security.decodeToken(Security.getToken() as string).sub;
     this.getWorldwidePeeks();
     this.getFollowedUsers();
-
+    this.peekService.refreshFeed.subscribe(refresh => {
+      this.getWorldwidePeeks();
+    })
   }
 
   getWorldwidePeeks() {

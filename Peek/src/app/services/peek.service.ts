@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { CreateCommentCommand } from '../models/Commands/CreateCommentCommand';
 import { CreatePeekCommand } from '../models/Commands/CreatePeekCommand';
@@ -14,6 +14,7 @@ import { GetPeekRequest } from '../models/Consults/GetPeeksRequest';
 export class PeekService {
 
   private readonly baseURL = environment["peekApiUrl"];
+  public refreshFeed = new EventEmitter<boolean>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -51,6 +52,11 @@ export class PeekService {
     var result = this.httpClient.get<any>(`${this.baseURL}/peekReader/comments?PeekId=${getComments.peekId}&PageInformation.Page=${getComments.pageInformation.page}&PageInformation.PageSize=${getComments.pageInformation.pageSize}`)
 
     return result
+  }
+
+  public toRefreshFeed() {
+    this.refreshFeed.emit(true)
+
   }
 
 }

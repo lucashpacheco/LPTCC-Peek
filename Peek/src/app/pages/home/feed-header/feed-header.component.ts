@@ -55,7 +55,7 @@ export class FeedHeaderComponent implements OnInit {
       .then(x => {
 
         this.peekForm.reset();
-
+        this.peekService.toRefreshFeed();
       })
   }
 }

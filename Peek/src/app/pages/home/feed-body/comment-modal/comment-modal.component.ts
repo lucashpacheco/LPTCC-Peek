@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Guid } from 'js-guid';
 import { CreateCommentCommand } from '../../../../models/Commands/CreateCommentCommand';
+import { GetCommentsRequest } from '../../../../models/Consults/GetCommentsRequest';
+import { Comment } from '../../../../models/Domain/Comment';
 import { PeekService } from '../../../../services/peek.service';
 import { UserService } from '../../../../services/user.service';
 import { Security } from '../../../../utils/security.util';
@@ -28,7 +30,6 @@ export class CommentModalComponent implements OnInit {
   })
 
   sendComment(peekId: string) {
-    debugger
     if (!this.commentForm.valid) {
       return;
     }
@@ -40,6 +41,16 @@ export class CommentModalComponent implements OnInit {
       .then(x => {
 
         this.commentForm.reset();
+        this.getComments(peekId);
+      })
+  }
+
+  getComments(peekId: string) {
+    var getCommentsRequest = new GetCommentsRequest(peekId, 1, 5);
+    this.peekService.getComments(getCommentsRequest)
+      .subscribe(data => {
+
+        this.data = data.data.result as Comment[];
 
       })
   }
