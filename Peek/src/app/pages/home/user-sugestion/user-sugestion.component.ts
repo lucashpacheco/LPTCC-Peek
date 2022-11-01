@@ -25,7 +25,7 @@ export class UserSugestionComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers(Security.getUserIdbyToken() , 1,6)
+    this.userService.getUsers(Security.getUserIdbyToken(), 1, 6)
       .subscribe((data: any) => {
         this.users = data.data.result;
       })
@@ -42,7 +42,7 @@ export class UserSugestionComponent implements OnInit {
     this.getUsers();
     this.getFollowedUsers();
 
-    var test = this.followedUsers.map((x:any) => {
+    var test = this.followedUsers.map((x: any) => {
       x.Id
     })
 
@@ -51,20 +51,20 @@ export class UserSugestionComponent implements OnInit {
   }
 
   onFollow(followUserId: string) {
+    var user = this.users.filter((x: any) => x.id == followUserId)[0] as User;
+    user.followed = true;
     this.userService.followUser(new FollowCommand(Security.getUserIdbyToken(), followUserId))
       .subscribe((data: any) => {
-        var user = this.users.filter((x: any) => x.id == followUserId)[0] as User;
-        user.followed = true;
         this.followedUsers = data.data.result;
         this.getUsers();
       })
   }
 
   onUnfollow(followUserId: string) {
+    var user = this.users.filter((x: any) => x.id == followUserId)[0] as User;
+    user.followed = false;
     this.userService.unfollowUser(new UnfollowCommand(Security.getUserIdbyToken(), followUserId))
       .subscribe((data: any) => {
-        var user = this.users.filter((x: any) => x.id == followUserId)[0] as User;
-        user.followed = false;
         this.followedUsers = data.data.result;
         this.getUsers();
       })
