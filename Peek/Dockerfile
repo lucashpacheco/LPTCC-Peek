@@ -10,7 +10,7 @@ FROM nginx:stable-alpine as production-stage
 VOLUME /var/log/nginx
 RUN pwd
 RUN ls ./app
-COPY ./app/nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
 RUN ls ./usr/share/nginx/html
 # RUN ls /app
 COPY --from=build-stage /app/Peek/dist/peek /usr/share/nginx/html
