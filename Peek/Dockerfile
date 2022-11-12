@@ -11,7 +11,7 @@ RUN ls /app/Peek/dist
 RUN ls /app/Peek/dist/peek
 FROM nginx:stable-alpine as production-stage
 VOLUME /var/log/nginx
-#COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
 RUN pwd
 RUN ls ./
 RUN ls ./usr/share/nginx/html
