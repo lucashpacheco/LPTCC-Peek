@@ -49,12 +49,6 @@ export class UsersComponent implements OnInit {
     this.getUsers();
     this.getFollowedUsers();
 
-    var test = this.followedUsers.map((x: any) => {
-      x.Id
-    })
-
-    console.log("aqui")
-    console.log(test)
   }
 
   onFollow(followUserId: string) {

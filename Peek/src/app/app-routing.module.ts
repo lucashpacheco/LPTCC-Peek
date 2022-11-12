@@ -1,6 +1,6 @@
 
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -18,58 +18,64 @@ const routes: Routes = [
   ////    }
   ////  ]
   ////},
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'login'
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'users',
-    component: UsersComponent
-  },
   //{
   //  path: '',
-  //  component: AppComponent,
-  //  children: [
-  //    {
-  //      path: 'register',
-  //      component: RegisterComponent
-  //    },
-  //    {
-  //      path: '',
-  //      component: LoginComponent,
-  //    },
-  //    {
-  //      path: 'login',
-  //      component: LoginComponent,
-  //    },
-  //    {
-  //      path: 'home',
-  //      component: HomeComponent
-  //    },
-  //    {
-  //      path: 'users',
-  //      component: UsersComponent
-  //    },
-  //  ]
+  //  pathMatch: 'full',
+  //  redirectTo: 'login'
   //},
+  //{
+  //  path: 'register',
+  //  component: RegisterComponent
+  //},
+  //{
+  //  path: 'login',
+  //  component: LoginComponent,
+  //},
+  //{
+  //  path: 'home',
+  //  component: HomeComponent
+  //},
+  //{
+  //  path: 'users',
+  //  component: UsersComponent
+  //},
+  {
+    path: '',
+    children: [
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: '',
+        component: LoginComponent,
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'users',
+        component: UsersComponent
+      },
+    ]
+  },
  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    enableTracing: false,
+    preloadingStrategy: PreloadAllModules,
+    scrollPositionRestoration: 'enabled',
+    relativeLinkResolution: 'corrected',
+    anchorScrolling: 'enabled'
+  })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

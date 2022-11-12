@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  peekApiUrl: "https://lptcc-api.azurewebsites.net"
+  production: false,
+  peekApiUrl: "https://localhost:25011"
 };

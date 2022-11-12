@@ -82,9 +82,6 @@ export class FeedBodyComponent implements OnInit {
         var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
         peek.commentsShowed = true;
         peek.comments = data.data.result as Comment[];
-        console.log("body-feed")
-        console.log(peek.comments)
-
       })
   }
 
@@ -93,13 +90,9 @@ export class FeedBodyComponent implements OnInit {
 
     var peek = this.worldwidePeeks.filter((x: any) => x.id == peekId)[0] as Peek;
     peek.commentsShowed = false;
-    console.log("body-feed")
-    console.log(peek)
-
   }
 
   onScroll(): void {
-    console.log("Scrolled");
     this.peekService.getPeeks(this.userId, ++this.page, 5)
       .subscribe(peeks => {
         var data = peeks as ResponseBase<PagedResult<Peek>>;
