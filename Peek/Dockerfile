@@ -2,11 +2,11 @@ FROM node:16.10.0-alpine as build-stage
 RUN apk update && apk add git
 
 COPY . ./app
-#COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
 WORKDIR /app/Peek
 RUN ls /app
 RUN yarn install && yarn build
 FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/Peek/nginx-custom.conf /etc/nginx/conf.d/default.conf
 VOLUME /var/log/nginx
 RUN pwd
 
