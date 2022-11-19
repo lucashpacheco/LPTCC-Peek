@@ -17,6 +17,7 @@ import { FileUploadComponent } from './file-uploader/file-uploader.component';
 export class RegisterComponent implements OnInit {
 
   hide: boolean = false;
+  isDisabled: boolean = false;
   public photo: any = null;
   // Variable to store shortLink from api response
   shortLink: string = "";
@@ -40,15 +41,14 @@ export class RegisterComponent implements OnInit {
   })
 
   onRegister() {
-    if (!this.registerForm.valid) {
+    if (!this.registerForm.valid || this.photo == null) {
       return;
     }
 
     var registerData = this.registerForm.getRawValue() as RegisterCommand;
     registerData.profilePhoto = this.photo;
 
-    console.log("on register")
-    console.log(registerData.profilePhoto)
+    this.isDisabled = true;
 
     this.registerService.registerUser(registerData)
       .subscribe(

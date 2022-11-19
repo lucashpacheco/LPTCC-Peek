@@ -16,12 +16,12 @@ export class PeekSugestionComponent implements OnInit {
       {
         authorName: "Julio Matino",
         peekId: "adçlkasdlçkaslçdkças",
-        message: "Qualque coisa que sirva para encher linguiça e testar a feat"
+        message: "Not implemented feature. Static card to show layout idea."
       },
       {
         authorName: "Tatiane Bergstun",
         peekId: "adçlkasdlçkaslçdkças",
-        message: "Outra coisa que sirva para encher linguiça e testar a feat e tudo mais"
+        message: "Not implemented feature. Static card to show layout idea."
       }    ]
   }
 

@@ -21,19 +21,19 @@
               </button>
             </mat-list-item>
             <mat-list-item>
-              <button mat-button class="menu-button">
+              <button mat-button class="menu-button" disabled>
                 <mat-icon>person</mat-icon>
                 <span> Profile</span>
               </button>
             </mat-list-item>
             <mat-list-item>
-              <button mat-button class="menu-button" (click)="goToUsers()">
+              <button mat-button class="menu-button" (click)="goToUsers()" disabled>
                 <mat-icon>people</mat-icon>
                 <span> Users</span>
               </button>
             </mat-list-item>
             <mat-list-item>
-              <button mat-button class="menu-button">
+              <button mat-button class="menu-button" disabled>
                 <mat-icon>info</mat-icon>
                 <span> About</span>
               </button>
@@ -58,7 +58,7 @@
           <mat-nav-list>
             <mat-divider></mat-divider>
             <mat-list-item>
-              <button mat-button class="menu-button last-button">
+              <button mat-button class="menu-button last-button" disabled>
                 <mat-icon>help</mat-icon>
                 <span>Help</span>
               </button>

@@ -5,6 +5,7 @@
       <h2>Register</h2>
     </div>
     <mat-card>
+      <p>Choose a profile picture:*</p>
       <div class="text-center">
         <img id="avatar" mat-card-avatar src="{{photo}}" hidden />
         <input class="form-control" type="file"
@@ -67,7 +68,7 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <button mat-flat-button color="primary">Register</button>
+      <button id="registerButton" mat-flat-button color="primary" [disabled]="isDisabled">Register</button>
     </form>
 
   </mat-card-content>

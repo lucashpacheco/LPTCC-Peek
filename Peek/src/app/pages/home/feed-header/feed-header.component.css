@@ -19,7 +19,7 @@
   height: 150px;
   position: relative;
   top: -120px;
-  left: 50px;
+  left: 30px;
   border: solid;
   border-color: #424242;
 }
@@ -33,7 +33,7 @@
   height: min-content;
   position: relative;
   top: 0px;
-  left: -90px;
+  left: -70px;
 }
 
 .profile-button-div {
