@@ -45,9 +45,6 @@ export class UserSugestionComponent implements OnInit {
     var test = this.followedUsers.map((x: any) => {
       x.Id
     })
-
-    console.log("aqui")
-    console.log(test)
   }
 
   onFollow(followUserId: string) {
